@@ -13,4 +13,23 @@ exceed the throughput supported by KMS API. As of now the KMS API throughput is 
 The wrapper circumvents the limitation by storing the data key in the memory for a little longer duration
 which is configurable.
 
+The time for which the data key is kept in memory can be configured by setting:
+
+TimeKeeper.maxIdleTimeInMillis
+(The default value is 5 minutes)
+
+Usage :
+
+//The static method takes in the region and the alias for customer master key as input
+S3CryptoClient s3Client = S3CryptoClient.getInstance("us-west-2","CMK");
+
+//To add an object to S3 bucket
+PutObjectResult putObjectResult = s3Client.putEncByteArrayToBucket(String bucketName, String key, byte[] object,ObjectMetadata metaData) ;
+
+//To retrieve a object using the key
+byte[] byteArray = s3Client.getEncByteArrayFromBucket(String bucketName, String key)
+
+
+
+
 
