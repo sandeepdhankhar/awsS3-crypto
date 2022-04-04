@@ -16,7 +16,8 @@ on:
 jobs:
   build:
 
-    runs-on: gradle:jdk8
+    runs-on: ubuntu-latest
+    container: gradle:jdk8
 
     steps:
     - uses: actions/checkout@v3
