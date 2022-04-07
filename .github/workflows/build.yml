@@ -17,9 +17,9 @@ jobs:
   build:
     runs-on: ubuntu-latest  
     steps:
-    - name: Repository Dispatch
-    - uses: peter-evans/repository-dispatch@v2
-      with:
+      - name: Repository Dispatch
+      - uses: peter-evans/repository-dispatch@v2
+        with:
           token: ${{ secrets.PAT }}
           repository: sandeepdhankhar/Dual-Encryption
           event-type: java-build
