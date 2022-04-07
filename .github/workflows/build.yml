@@ -15,12 +15,24 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-    container: gradle:jdk8
-
+    runs-on: ubuntu-latest  
     steps:
-    - uses: actions/checkout@v3
-    - name: Build code
-      run:  ./gradlew build
-      shell: bash
+    - name: Repository Dispatch
+    - uses: peter-evans/repository-dispatch@v2
+      with:
+          token: ${{ secrets.PAT }}
+          repository: sandeepdhankhar/Dual-Encryption
+          event-type: java-build
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+
+
+
+
+
+#container: gradle:jdk8
+
+#    steps:
+#    - uses: actions/checkout@v3
+#    - name: Build code
+#      run:  ./gradlew build
+#      shell: bash
